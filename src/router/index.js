@@ -6,8 +6,30 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/login',
-    name: 'login',
-    component: () => import('@/views/login') // 直接配置的路由懒加载
+    component: () => import('@/views/login')
+  },
+  {
+    path: '/',
+    component: () => import('@/views/Layout'), // 直接配置的路由懒加载
+    redirect: '/ ',
+    children: [
+      {
+        path: '/ ',
+        component: () => import('@/views/Home')
+      },
+      {
+        path: '/video',
+        component: () => import('@/views/Video')
+      },
+      {
+        path: '/qa',
+        component: () => import('@/views/QA')
+      },
+      {
+        path: '/profile',
+        component: () => import('@/views/My')
+      }
+    ]
   }
 ]
 
