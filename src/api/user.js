@@ -2,6 +2,7 @@
  * 用户相关的请求模块
  */
 import request from '@/utils/request'
+import store from '@/store'
 /**
  * 用户登录
  */
@@ -17,5 +18,14 @@ export const sendSms = (mobile) => {
   return request({
     method: 'GET',
     url: `/v1_0/sms/codes/${mobile}`
+  })
+}
+
+export const getUserInfo = () => {
+  return request({
+    url: '/v1_0/user',
+    headers: {
+      Authorization: `Bearer ${store.state.user.token}`
+    }
   })
 }

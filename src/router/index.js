@@ -10,6 +10,7 @@ const routes = [
   },
   {
     path: '/',
+    name: 'Layout',
     component: () => import('@/views/Layout'), // 直接配置的路由懒加载
     redirect: '/ ',
     children: [
@@ -26,6 +27,7 @@ const routes = [
         component: () => import('@/views/QA')
       },
       {
+        name: 'profile',
         path: '/profile',
         component: () => import('@/views/My')
       }
